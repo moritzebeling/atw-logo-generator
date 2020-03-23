@@ -10,10 +10,11 @@ var settings = {
 window.render = function( i ){
 
 	input = i;
-	project.clear();
-	calcAreas();
 
 	console.log( input );
+
+	project.clear();
+	calcAreas();
 
 }
 
@@ -80,33 +81,35 @@ function areaLogoOuter( constraints ){
 function areaLogoInner( logoOuter ){
 
 	var padding = input.padding * scale;
-	return calcArea( logoOuter.width - padding, logoOuter.height - padding );
+	return calcArea( logoOuter.width - padding, logoOuter.height - padding, false, false, false );
 }
 function areaText( logoInner ){
 
 	var width = ( logoInner.width / 4 ) * input.size;
-
 	var height = 0;
-	var asset, s;
 
-	if( asset = getAsset( input.text ) ){
-		s = width / asset.width;
-		height = asset.height * s;
+	var asset = getAsset( input.text );
+	if( asset ){
+		asset.scale = width / asset.width;
+		height = asset.height * asset.scale;
 	}
 
 	var y = logoInner.y + logoInner.height - height;
 	var area = calcArea( width, height, logoInner.x, y );
 
 	if( input.text ){
-		asset.width *= s;
-		asset.height *= s;
+		asset.width *= asset.scale;
+		asset.height *= asset.scale;
 		drawLogo( asset, area.x, area.y );
 	}
 
 	return area;
 }
 function areaShape( logoInner, logoText ){
-	var padding = input.padding * scale * 0.5;
+	var padding = 0;
+	if( getAsset(input.text) ){
+		padding = input.padding * scale * 0.5;
+	}
 	var height = logoInner.height - logoText.height - padding;
 	return calcArea( logoInner.width, height, logoInner.x, logoInner.y );
 }
