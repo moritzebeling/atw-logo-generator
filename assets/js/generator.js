@@ -3,7 +3,7 @@ var input;
 
 var settings = {
 	showRulers: false,
-	showAreas: true,
+	showAreas: false,
 };
 
 // render
@@ -76,7 +76,13 @@ function areaConstraints(){
 function areaLogoOuter( constraints ){
 
 	var area = fitRectIntoRect( input, constraints );
-	return calcArea( area.width, area.height );
+	area = calcArea( area.width, area.height, false, false, false );
+
+	var a = new Path.Rectangle( area );
+	a.fillColor = '#fff';
+
+	return area;
+
 }
 function areaLogoInner( logoOuter ){
 
