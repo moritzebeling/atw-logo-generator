@@ -55,6 +55,7 @@ const _createPresets = [
 		padding: 40,
 		stroke: 5,
 		text: 'atw2',
+		size: 2,
 	},
 	{
 		id: 'din2p',
@@ -64,6 +65,7 @@ const _createPresets = [
 		padding: 30,
 		stroke: 5,
 		text: 'atw2',
+		size: 2,
 	},
 	{
 		id: 'din3p',
@@ -73,6 +75,7 @@ const _createPresets = [
 		padding: 15,
 		stroke: 5,
 		text: 'atw2',
+		size: 2,
 	},
 	{
 		id: 'din4p',
@@ -82,6 +85,7 @@ const _createPresets = [
 		padding: 10,
 		stroke: 3,
 		text: 'atw2',
+		size: 2,
 	},
 	{
 		id: 'din4l',
