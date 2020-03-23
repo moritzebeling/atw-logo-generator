@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'>
+
+	<title>ATW Logo Generator</title>
+
+	<link rel='stylesheet' href='assets/css/reset.css'>
+	<link rel='stylesheet' href='assets/css/styles.css'>
+
+	<script defer src='assets/js/lib/paper-full.js'></script>
+</head>
+
+<body>
+
+	<div id="container">
+		<canvas id="canvas" resize></canvas>
+	</div>
+
+	<div id="controls">
+
+		<div class="left fields">
+
+			<div class="select">
+				<div class="label" title="Select preset">
+					<select id="presets"></select>
+				</div>
+			</div>
+
+		</div>
+		<div class="right fields">
+
+			<div class="button">
+				<button id="download">Export</button>
+			</div>
+
+		</div>
+		<div class="center fields">
+
+			<div class="input">
+				<label title="Width of outer area">
+					<span>W</span>
+					<input class="field" id="width" placehoder="Width" type="number" min="1" max="99999" maxlength="5" />
+				</label>
+			</div>
+
+			<div class="input">
+				<label title="Height of outer area">
+					<span>H</span>
+					<input class="field" id="height" placehoder="Height" type="number" min="1" max="99999" maxlength="5" />
+				</label>
+			</div>
+
+			<div class="input">
+				<label title="Inner space of area">
+					<span>Padding</span>
+					<input class="field" id="padding" placehoder="Padding" type="number" min="0" max="999" maxlength="3" step="0.1" />
+				</label>
+			</div>
+
+			<div class="input">
+				<label title="Stroke width">
+					<span>Stroke</span>
+					<input class="field" id="stroke" placehoder="Stroke" type="number" min="1" max="999" maxlength="3" />
+				</label>
+			</div>
+
+			<div class="select">
+				<div class="label" title="Text below logo shape">
+					<span>Text</span>
+					<select id="text" class="field">
+						<option value="false">–</option>
+						<option value="atw">ATW</option>
+						<option value="tud">TUD</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="select">
+				<div class="label" title="Size the logo is used at">
+					<span>Size</span>
+					<select id="size" class="field" data-parse="number">
+						<option value="4">S</option>
+						<option value="3">M</option>
+						<option value="2">L</option>
+						<option value="1">XL</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<script defer src='assets/js/assets.js'></script>
+	<script defer src='assets/js/helpers.js'></script>
+	<script defer src='assets/js/presets.js'></script>
+
+	<script defer type='text/paperscript' src='assets/js/generator.js' canvas='canvas'></script>
+
+	<script defer src='assets/js/interface.js'></script>
+
+</body>
+</html>
