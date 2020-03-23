@@ -5,9 +5,9 @@ const presets = [];
 const _defaultDefinition = {
 	title: false,
 	id: false,
-	width: 4,
-	height: 2,
-	padding: 0,
+	width: 16,
+	height: 8,
+	padding: 1,
 	stroke: 10,
 	text: 'atw',
 	size: 2,

@@ -12,6 +12,10 @@ function setup(){
 		selectAddOption(presetsSelect, preset.id, preset.title);
 	}
 	selectAddOption(presetsSelect, false, 'Custom', true);
+	textSelect = document.getElementById('text');
+	for (let key in assets ) {
+		selectAddOption(textSelect, key, assets[key].title);
+	}
 	presetsSelect.addEventListener("change", () => {
 		selectPreset( presetsSelect.value );
 	}, false);
