@@ -1,7 +1,10 @@
 var scale = 1;
 var input;
 
-var guides = true;
+var settings = {
+	showRulers: false,
+	showAreas: true,
+};
 
 // render
 window.render = function( i ){
@@ -31,13 +34,8 @@ function calcArea( width, height, centerOrX, y, help ){
 	  a.y = y;
 	}
 
-	if( help !== false ){
-		if( guides === true ){
-			// render help
-			var h = new Path.Rectangle(a);
-		  h.strokeColor = 'violet';
-		  h.strokeWidth = 0.5;
-		}
+	if( help !== false && height > 0 ){
+		showArea( a );
 	}
 
 	return a;
@@ -87,19 +85,30 @@ function areaLogoInner( logoOuter ){
 function areaText( logoInner ){
 
 	var width = ( logoInner.width / 4 ) * input.size;
-	drawLogo();
 
-	switch (input.text) {
-		case 'atw':
-			return calcArea( width, 100 );
-			break;
-		case 'tud':
-			return calcArea( width, 100 );
-			break;
-		default:
-			return calcArea( width, 0 );
+	var height = 0;
+	var asset, s;
+
+	if( asset = getAsset( input.text ) ){
+		s = width / asset.width;
+		height = asset.height * s;
 	}
 
+	var y = logoInner.y + logoInner.height - height;
+	var area = calcArea( width, height, logoInner.x, y );
+
+	if( input.text ){
+		asset.width *= s;
+		asset.height *= s;
+		drawLogo( asset, area.x, area.y );
+	}
+
+	return area;
+}
+function areaShape( logoInner, logoText ){
+	var padding = input.padding * scale * 0.5;
+	var height = logoInner.height - logoText.height - padding;
+	return calcArea( logoInner.width, height, logoInner.x, logoInner.y );
 }
 
 function calcAreas(){
@@ -108,29 +117,30 @@ function calcAreas(){
 	var logoOuter = areaLogoOuter( constraints );
 	var logoInner = areaLogoInner( logoOuter );
 
-	// var logoText = areaText( logoInner );
+	var logoText = areaText( logoInner );
+	var logoShape = areaShape( logoInner, logoText );
 
 	drawRulers( logoInner );
 
-	drawLogoShape( logoInner );
+	// drawLogo();
+	drawLogoShape( logoShape );
 
 }
 
 
 
 
-function drawLogo( filename ){
-	var file;
-	if( assets.hasOwnProperty(filename) ){
-		file = assets[key];
-	} else {
-		file = assets[ Object.keys(assets)[0] ];
+function drawLogo( asset, x, y ){
+	if( x === undefined ){
+		x = 20;
 	}
-
-	project.importSVG( file.url, function(item, svg) {
+	if( y === undefined ){
+		y = 20;
+	}
+	project.importSVG( asset.url, function(item, svg) {
 		item.bounds = new Rectangle(
-			new Point(20, 20),
-			new Size( file.width, file.height)
+			new Point(x, y),
+			new Size( asset.width, asset.height)
 		);
 	});
 
@@ -142,22 +152,7 @@ function translateToGrid(area,x,y){
         area.y + (area.height * y)
     );
 }
-function drawRulers( area ){
-	if( guides === false ){
-		return;
-	}
 
-	var fourth = area.width / 4;
-	for( var x = 0; x < 5; x++ ){
-		var line = new Path.Line(
-			new Point( area.x + (x * fourth), 0),
-			new Point( area.x + (x * fourth), view.viewSize.height)
-		);
-		line.strokeColor = 'blue';
-		line.strokeWidth = 0.5;
-	}
-
-}
 function drawLogoShape( area ){
 
     var style = {
@@ -186,4 +181,30 @@ function drawLogoShape( area ){
     W.add( translateToGrid(area,8,1) );
     W.add( translateToGrid(area,8,0) );
     W.closed = true;
+}
+
+/* help */
+function showArea( area ){
+	if( settings.showAreas !== true ){
+		return false;
+	}
+	var a = new Path.Rectangle( area );
+	a.strokeColor = 'violet';
+	a.strokeWidth = 0.5;
+}
+function drawRulers( area ){
+	if( settings.showRulers !== true ){
+		return false;
+	}
+
+	var fourth = area.width / 4;
+	for( var x = 0; x < 5; x++ ){
+		var line = new Path.Line(
+			new Point( area.x + (x * fourth), 0),
+			new Point( area.x + (x * fourth), view.viewSize.height)
+		);
+		line.strokeColor = 'blue';
+		line.strokeWidth = 0.5;
+	}
+
 }
