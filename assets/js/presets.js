@@ -6,11 +6,11 @@ const _defaultDefinition = {
 	title: false,
 	id: false,
 	width: 16,
-	height: 8,
+	height: 6,
 	padding: 1,
-	stroke: 10,
+	stroke: 8,
 	text: 'atw',
-	size: 2,
+	size: 4,
 };
 
 /* definition class */
@@ -52,14 +52,18 @@ const _createPresets = [
 		title: 'A1 hoch',
 		width: 594,
 		height: 840,
-		padding: 30,
+		padding: 40,
+		stroke: 5,
+		text: 'atw2',
 	},
 	{
 		id: 'din2p',
 		title: 'A2 hoch',
 		width: 420,
 		height: 594,
-		padding: 20,
+		padding: 30,
+		stroke: 5,
+		text: 'atw2',
 	},
 	{
 		id: 'din3p',
@@ -67,6 +71,8 @@ const _createPresets = [
 		width: 297,
 		height: 420,
 		padding: 15,
+		stroke: 5,
+		text: 'atw2',
 	},
 	{
 		id: 'din4p',
@@ -74,6 +80,8 @@ const _createPresets = [
 		width: 210,
 		height: 297,
 		padding: 10,
+		stroke: 3,
+		text: 'atw2',
 	},
 	{
 		id: 'din4l',
@@ -81,13 +89,19 @@ const _createPresets = [
 		width: 297,
 		height: 210,
 		padding: 10,
+		stroke: 3,
+		text: 'atw',
+		size: 4
 	},
 	{
 		id: 'din5p',
 		title: 'A5 hoch',
 		width: 148,
 		height: 210,
-		padding: 10
+		padding: 10,
+		stroke: 3,
+		text: 'atw',
+		size: 4
 	},
 	{
 		id: 'din5l',
@@ -95,13 +109,19 @@ const _createPresets = [
 		width: 210,
 		height: 148,
 		padding: 10,
+		stroke: 3,
+		text: 'atw',
+		size: 4
 	},
 	{
 		id: 'screen',
 		title: 'Screen',
 		width: 16,
 		height: 9,
-		padding: 1
+		padding: 1,
+		stroke: 6,
+		text: 'atwtud',
+		size: 4
 	},
 	{
 		id: 'vk',
@@ -109,13 +129,19 @@ const _createPresets = [
 		width: 85,
 		height: 55,
 		padding: 5,
+		stroke: 5,
+		text: 'atwtud',
+		size: 4
 	},
 	{
 		id: 'square',
 		title: 'Quadrat',
 		width: 4,
 		height: 4,
-		padding: 0
+		padding: 0.25,
+		stroke: 10,
+		text: false,
+		size: 4
 	}
 ];
 
