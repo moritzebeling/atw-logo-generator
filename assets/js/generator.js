@@ -199,7 +199,6 @@ function showArea( area ){
 	a.strokeWidth = 0.5;
 }
 function drawRulers( area ){
-	console.log( generatorView );
 	if( generatorView.showRulers !== true ){
 		return false;
 	}
