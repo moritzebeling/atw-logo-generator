@@ -10,6 +10,7 @@ var settings = {
 window.render = function( i ){
 
 	input = i;
+	input.padding = i.width / 16;
 
 	console.log( input );
 

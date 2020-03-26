@@ -7,7 +7,7 @@ const _defaultDefinition = {
 	id: false,
 	width: 16,
 	height: 6,
-	padding: 1,
+	padding: 3,
 	stroke: 8,
 	text: 'atw',
 	size: 4,
