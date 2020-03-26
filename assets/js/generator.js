@@ -1,18 +1,14 @@
 var scale = 1;
 var input;
 
-var settings = {
-	showRulers: false,
-	showAreas: false,
-};
-
 // render
 window.render = function( i ){
 
-	input = i;
-	input.padding = i.width / 16;
-
-	console.log( input );
+	if( i !== undefined ){
+		input = i;
+		input.padding = i.width / 16;
+		console.log( input );
+	}
 
 	project.clear();
 	calcAreas();
@@ -195,7 +191,7 @@ function drawLogoShape( area ){
 
 /* help */
 function showArea( area ){
-	if( settings.showAreas !== true ){
+	if( generatorView.showAreas !== true ){
 		return false;
 	}
 	var a = new Path.Rectangle( area );
@@ -203,7 +199,8 @@ function showArea( area ){
 	a.strokeWidth = 0.5;
 }
 function drawRulers( area ){
-	if( settings.showRulers !== true ){
+	console.log( generatorView );
+	if( generatorView.showRulers !== true ){
 		return false;
 	}
 

@@ -3,6 +3,12 @@ let fields, buttons, presetsSelect;
 let original = presets[0];
 let design = {};
 
+let generatorView = {
+	helpMode: 0,
+	showRulers: false,
+	showAreas: false,
+};
+
 /* setup */
 function setup(){
 
@@ -12,13 +18,14 @@ function setup(){
 		selectAddOption(presetsSelect, preset.id, preset.title);
 	}
 	selectAddOption(presetsSelect, false, 'Custom', true);
+	presetsSelect.addEventListener("change", () => {
+		selectPreset( presetsSelect.value );
+	}, false);
+	// create text logo select field
 	textSelect = document.getElementById('text');
 	for (let key in assets ) {
 		selectAddOption(textSelect, key, assets[key].title);
 	}
-	presetsSelect.addEventListener("change", () => {
-		selectPreset( presetsSelect.value );
-	}, false);
 
 	// add events to fields
 	fields = document.querySelectorAll('.field');
@@ -33,6 +40,9 @@ function setup(){
 		switch (button.id) {
 			case 'download':
 				button.addEventListener("click", download, false);
+				break;
+			case 'showHelp':
+				button.addEventListener("click", showHelp, false);
 				break;
 		}
 	}
@@ -66,7 +76,7 @@ function selectPreset( select = 'original' ){
 		field.value = design[field.id];
 	}
 
-	render( design );
+	window.render( design );
 }
 
 /* update input */
@@ -103,4 +113,33 @@ function checkMatchPreset(){
 /* export */
 function download(){
 	console.log('download svg');
+}
+
+/* help */
+function showHelp(){
+
+	generatorView.helpMode++;
+
+	switch (generatorView.helpMode) {
+		case 4:
+			generatorView.helpMode = 0;
+		case 0:
+			generatorView.showRulers = false;
+			generatorView.showAreas = false;
+			break;
+		case 1:
+			generatorView.showRulers = true;
+			generatorView.showAreas = false;
+			break;
+		case 2:
+			generatorView.showRulers = false;
+			generatorView.showAreas = true;
+			break;
+		case 3:
+			generatorView.showRulers = true;
+			generatorView.showAreas = true;
+			break;
+	}
+
+	window.render();
 }
