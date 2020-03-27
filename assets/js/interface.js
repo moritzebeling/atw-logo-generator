@@ -146,22 +146,17 @@ function showHelp(){
 
 /* detect keystrokes */
 document.onkeydown = function(event) {
-	console.log( event );
   switch (event.key) {
 		case 'w':
-       showHelp();
-     break;
-   case 37:
-      console.log('Left key pressed');
-    break;
-   case 38:
-      console.log('Up key pressed');
-    break;
-   case 39:
-      console.log('Right key pressed');
-    break;
-   case 40:
-      console.log('Down key pressed');
-    break;
+			showHelp();
+		break;
+		/*
+		case 'ArrowUp':
+		case 'ArrowDown':
+		case 'ArrowLeft':
+		case 'ArrowRight':
+		  console.log('Arrow key pressed');
+		break;
+		*/
   }
 };
