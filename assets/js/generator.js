@@ -14,6 +14,20 @@ window.render = function( i ){
 	calcAreas();
 
 }
+// export and download
+window.download = function( event ){
+
+	var button = event.srcElement;
+
+	var svg = project.exportSVG({ asString: true });
+	var filename = 'ATW-Logo_' + definitionSignature( input ) + '.svg';
+
+	console.log( 'Export '+filename );
+
+	button.href = getBlobURL(svg, 'image/svg+xml');
+	button.download = filename;
+
+}
 
 function calcArea( width, height, centerOrX, y, help ){
 

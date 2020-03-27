@@ -8,3 +8,9 @@ function selectAddOption( select, value, text, disabled = false ){
 	}
 	select.appendChild( option );
 }
+
+function getBlobURL(content, type) {
+	return URL.createObjectURL(new Blob([content], {
+		type: type
+	}));
+}

@@ -35,7 +35,7 @@ function setup(){
 	}
 
 	// add events to buttons
-	buttons = document.querySelectorAll('button');
+	buttons = document.querySelectorAll('button, a.button');
 	for(let button of buttons ){
 		switch (button.id) {
 			case 'download':
@@ -112,7 +112,7 @@ function checkMatchPreset(){
 
 /* export */
 function download(){
-	console.log('download svg');
+	window.download();
 }
 
 /* help */

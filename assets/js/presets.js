@@ -41,6 +41,15 @@ class Definition {
 	}
 }
 
+function definitionSignature( design ){
+	let sig = [
+		design.text+design.size,
+		design.width+'x'+design.height,
+		design.stroke+'s'
+	];
+	return sig.join('-');
+}
+
 /* list of presets to create */
 const _createPresets = [
 	{

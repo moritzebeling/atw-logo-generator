@@ -88,7 +88,7 @@ input {
 	text-align: center;
 }
 
-button {
+button, a.button {
 	padding: 0.3rem;
 	margin: 0.3rem;
 	background-color: #eee;
@@ -97,12 +97,6 @@ button {
 	transition: background-color 300ms ease, color 300ms ease;
 	&:hover {
 		background-color: #0f0;
-	}
-}
-
-button#reset {
-	&:hover {
-		background-color: #f00;
 	}
 }
 
