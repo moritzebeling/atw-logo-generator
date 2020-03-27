@@ -129,17 +129,39 @@ function showHelp(){
 			break;
 		case 1:
 			generatorView.showRulers = true;
-			generatorView.showAreas = false;
-			break;
-		case 2:
-			generatorView.showRulers = false;
 			generatorView.showAreas = true;
 			break;
-		case 3:
+		case 2:
 			generatorView.showRulers = true;
+			generatorView.showAreas = false;
+			break;
+		case 3:
+			generatorView.showRulers = false;
 			generatorView.showAreas = true;
 			break;
 	}
 
 	window.render();
 }
+
+/* detect keystrokes */
+document.onkeydown = function(event) {
+	console.log( event );
+  switch (event.key) {
+		case 'w':
+       showHelp();
+     break;
+   case 37:
+      console.log('Left key pressed');
+    break;
+   case 38:
+      console.log('Up key pressed');
+    break;
+   case 39:
+      console.log('Right key pressed');
+    break;
+   case 40:
+      console.log('Down key pressed');
+    break;
+  }
+};
