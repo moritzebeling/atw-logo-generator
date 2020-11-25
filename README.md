@@ -1,3 +1,3 @@
 # ATW Logo Generator
 
-[Preview](https://moritzebeling.github.io/atw-logo-generator/)
+[Preview](https://atw-architekturtheorie.github.io/atw-logo-generator/)
